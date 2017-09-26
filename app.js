@@ -1,11 +1,28 @@
 var cats = [
 	{
 		'name': 'Ser Meow',
-		'image': 'sermeow.jpg'
+		'image': 'images/sermeow.jpg',
+		'clicks': 0
 	},
 	{
 		'name': 'Pounce',
-    	'image': 'pounce.jpg'
+    	'image': 'images/pounce.jpg',
+    	'clicks': 0
+    },
+    {
+    	'name': 'Benny & Joon',
+    	'image': 'images/bennyjoon.jpg',
+    	'clicks': 0
+    },
+    {
+    	'name': 'Siberia',
+    	'image': 'images/siberia.jpg',
+    	'clicks': 0
+    },
+    {
+    	'name': 'Leroy',
+    	'image': 'images/leroy.jpg',
+    	'clicks': 0
     }
 ];
 
