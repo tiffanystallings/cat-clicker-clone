@@ -1,3 +1,17 @@
 * {
 	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+#cat {
+	height: 426px;
+	width: 640px;
+	background-image: url('cat.jpg');
+}
+
+#count {
+	padding: 10px;
+	color: white;
+	text-shadow: 2px 2px 2px black;
+	font-size: 40px;
 }
