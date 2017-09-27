@@ -1,5 +1,6 @@
 // Model
 var model = { 
+	'adminMode': false,
 	'currentCat': null,
 	'cats': [
 		{
@@ -39,10 +40,31 @@ view = {
 		$('.cat').click(function() {
 			octopus.incrementCount();
 		});
+
+		$('.admin > h4').click(function() {
+			octopus.handleAdminClick();
+		});
+
+		$('#cancel').click(function() {
+			view.renderAdmin(octopus.getCurrentCat());
+			octopus.handleAdminClick();
+		})
+
+		$('#edit').click(function() {
+			var name = $('#cat-name').val()
+			var image = $('#cat-image').val()
+			var clicks = $('#cat-clicks').val()
+
+			octopus.updateCat(name, image, clicks);
+			octopus.handleAdminClick();
+			view.renderList();
+			view.renderCat();
+		})
 	},
 
 	'renderList': function() {
 		var cats = octopus.listCats();
+		$('.links').text("");
 		for (i=0; i<cats.length; i++) {
 			var cat = cats[i];
 			$('.links').append('<li class="cat-link">' + cat.name + '</li>');
@@ -62,6 +84,24 @@ view = {
 		$('.cat').css('background-image', 'url(' + cat.image + ')');
 		$('.count').text(cat.clicks);
 		$('.name').text(cat.name);
+
+		view.renderAdmin(cat);
+	},
+
+	'renderAdmin': function(cat) {
+		$('#cat-name').val(cat.name);
+		$('#cat-image').val(cat.image);
+		$('#cat-clicks').val(cat.clicks);
+	},
+
+	'showAdmin': function() {
+		$('.admin').css('height', 'auto');
+		$('.admin').css('width', '96%');
+	},
+
+	'hideAdmin': function() {
+		$('.admin').css('height', '65px');
+		$('.admin').css('width', '80px');
 	}
 }
 
@@ -71,7 +111,7 @@ var octopus = {
 		model.currentCat = model.cats[0];
 		console.log('Set current cat.')
 		view.init();
-		console.log('View initialized')
+		console.log('View initialized');
 	},
 
 	'listCats': function() {
@@ -89,6 +129,22 @@ var octopus = {
 	'incrementCount': function() {
 		model.currentCat.clicks++;
 		view.renderCat();
+	},
+
+	'handleAdminClick': function() {
+		if (model.adminMode) {
+			model.adminMode = false;
+			view.hideAdmin();
+		} else {
+			model.adminMode = true;
+			view.showAdmin();
+		}
+	},
+
+	'updateCat': function(name, image, clicks) {
+		model.currentCat.name = name;
+		model.currentCat.image = image;
+		model.currentCat.clicks = clicks;
 	}
 }
 

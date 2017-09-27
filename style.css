@@ -67,3 +67,44 @@ aside {
 .name {
 	font-size: 20px;
 }
+
+.admin {
+	margin: 10px;
+	padding: 5px;
+	width: 80px;
+	height: 65px;
+	background-color: white;
+	color: pink;
+	webkit-transition: height 1s, width 1s;
+	transition: height 1s, width 1s;
+	overflow: hidden;
+}
+
+.inputs {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.buttons {
+	width: 100%;
+	display: inline-flex;
+	justify-content: space-between;
+}
+
+#cancel, #edit {
+	padding: 5px;
+	width: 100px;
+	background-color: pink;
+	color: white;
+	text-align: center;
+}
+
+.admin h4 {
+	padding-left: 10px;
+}
